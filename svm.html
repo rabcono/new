@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% include 'snippets/navbar.html' %}
+
+
+{% block content %}
+<div class="container">
+  <h1 class="my-4 text-center">SVM Result</h1>
+
+
+
+  <div class="container">
+    
+        <table border="1" class="dataframe table table-striped">
+          
+          <thead>
+            <tr style="text-align: right;">
+              <th></th>
+              {% for i in result['macro avg'].items() %}
+              <th>{{i[0]}}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Malignant</th>
+              {% for i in result['Malignant'].items() %}
+              <td>{{"%.2f"|format(i[1])}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <th>Benign</th>
+              {% for i in result['Benign'].items() %}
+              <td>{{"%.2f"|format(i[1])}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <th>macro avg</th>
+              {% for i in result['macro avg'].items() %}
+              <td>{{"%.2f"|format(i[1])}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <th>weighted avg</th>
+              {% for i in result['weighted avg'].items() %}
+              <td>{{"%.2f"|format(i[1])}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <th style="background-color:	#d3d3d3">accuracy</th>
+              <td style="text-align: right; background-color:			#d3d3d3"  colspan="4">{{"%.2f"|format(result['accuracy'])}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+</div>
+    
+
+
+</div>
+
+{% endblock %}
